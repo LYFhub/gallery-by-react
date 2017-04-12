@@ -24,6 +24,7 @@ class GalleryByReactApp extends React.Component {
 		return (
 			<section className="stage">
 				<section className="img-sec">
+					<img src={imageDatas[0].imageURL} />
 				</section>
 				<nav className="controller-nav">
 				</nav>
