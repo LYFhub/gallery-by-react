@@ -19,19 +19,46 @@ imageDatas = (function genImageURL(imageDatasArr) {
 	return imageDatasArr;
 })(imageDatas);
 
-class GalleryByReactApp extends React.Component {
+// 单个图片组件，做子组件，由父组件 GalleryByReactApp 调用
+// 使用props获取父组件中自定义的属性:data
+class ImgFigure extends React.Component {
 	render() {
+		return (
+			<figure className="img-figure">
+				<img src={this.props.data.imageURL} alt={this.props.data.title}></img> 
+				<figcaption>
+					<h2 className="img-title">{this.props.data.title}</h2>
+				</figcaption>
+			</figure>
+		);
+	}
+};
+
+// 图片画廊组件
+// 循环遍历图片库，将生成的子组件压入数组，便于插入父组件中
+class GalleryByReactApp extends React.Component {
+
+	render() {
+
+		var controllerUnits = [],
+			imgFigures = [];
+
+		imageDatas.forEach(function(value) {
+			imgFigures.push(<ImgFigure data={value}/>);
+		});
+
 		return (
 			<section className="stage">
 				<section className="img-sec">
-					<img src={imageDatas[0].imageURL} />
+					{imgFigures}
 				</section>
 				<nav className="controller-nav">
+					{controllerUnits}
 				</nav>
 			</section>
 		);
 	}
-}
+};
 
 GalleryByReactApp.defaultProps = {};
 
