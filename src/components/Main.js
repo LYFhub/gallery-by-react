@@ -77,7 +77,7 @@ class GalleryByReactApp extends React.Component {
 
 	}
 
-	//组件加载之后，为每张图片计算其未知的范围
+	//组件加载之后，为每张图片计算其未知的范围,Math.ceil()->取整
 	componentDidMount() {
 		// 首先拿到舞台的大小
 		var stageDOM = this.refs.stage,
